@@ -18,7 +18,7 @@ int main(){
         if(max<x[i]){
             kedua = max;
             max = x[i];
-        } else if(kedua<x[i] && max<kedua){
+        } else if(x[i]>kedua && x[i]!=max){
             kedua = x[i];
         }
         }
