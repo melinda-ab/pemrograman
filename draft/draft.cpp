@@ -87,14 +87,19 @@ public:
             if (ditebak[i] == huruf) {
                 tertebak[i] = huruf;
                 correctguess = true;
+            } else if (ditebak[i] == ' ') {
+                tertebak[i] = '/';
             }
         }
-        return correctguess;
+    return correctguess;
     }
 
     //Fungsi untuk memeriksa apakah pemain menang
     bool menang() {
-        return ditebak == tertebak;
+        string cleanedTertebak = tertebak;
+        string cleanedDitebak = ditebak;
+        replace(cleanedTertebak.begin(), cleanedTertebak.end(), '/', ' ');
+        return cleanedDitebak == cleanedTertebak;
     }
 
     //Fungsi untuk memeriksa apakah pemain kalah
@@ -157,6 +162,8 @@ public:
 
             if(find(huruftertebak.begin(), huruftertebak.end(), guessedletter) != huruftertebak.end()) {
                 cout<<"Kamu sudah menembak huruf itu" << endl;
+                cin.ignore();
+                cin.get();
                 continue;
             }
 
@@ -168,8 +175,6 @@ public:
             } else {
                 cout << "Tebakan benar!" << endl;
             }
-
-            cout << endl;
 
             cin.ignore();
             cin.get();
